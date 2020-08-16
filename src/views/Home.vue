@@ -11,14 +11,8 @@
     <el-container>
       <!-- 左侧菜单栏 -->
       <el-aside width="auto">
-        <el-menu
-          class="el-menu-vertical-demo"
-          :collapse="isCollapse"
-          v-for="(item , index) in menus"
-          :key="index"
-          router
-        >
-          <el-submenu :index="strValue(index + 1)">
+        <el-menu class="el-menu-vertical-demo" :collapse="isCollapse" :unique-opened="true" router>
+          <el-submenu :index="strValue(index)" v-for="(item , index) in menus" :key="index">
             <template slot="title">
               <i :class="IConsInfo[index]"></i>
               <span slot="title">{{item.name}}</span>
