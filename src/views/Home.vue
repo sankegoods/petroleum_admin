@@ -12,7 +12,7 @@
       <!-- 左侧菜单栏 -->
       <el-aside width="auto">
         <el-menu class="el-menu-vertical-demo" :collapse="isCollapse" :unique-opened="true" router>
-          <el-submenu :index="strValue(index)" v-for="(item , index) in menus" :key="index">
+          <el-submenu :index="index +''" v-for="(item , index) in menus" :key="index">
             <template slot="title">
               <i :class="IConsInfo[index]"></i>
               <span slot="title">{{item.name}}</span>
@@ -49,11 +49,13 @@ export default {
       isCollapse: false,
       menus: [], //菜单数据
       IConsInfo: [
+        //图标
         "el-icon-s-home",
         "el-icon-s-check",
         "el-icon-setting",
         "el-icon-eleme",
       ],
+      path: "/HomeIndex",
     };
   },
   components: {
@@ -62,6 +64,7 @@ export default {
   },
   created() {
     this.menuInfo();
+    console.log("创建");
   },
   methods: {
     menuInfo() {
@@ -75,9 +78,18 @@ export default {
           console.log(err);
         });
     },
-    strValue(str) {
-      return str + "";
-    },
+  },
+  activated() {
+    console.log("活跃");
+  },
+  deactivated() {
+    console.log("不活跃")
+  },
+  destroyed() {
+    // console.log("创建");
+  },
+  beforeRouteleave(to, form, next) {
+    this.path = this.$router.path;
   },
 };
 </script>

@@ -5,9 +5,16 @@ const login = () =>
 
 const routes = [{
     path: '/',
-    name: '主页',
     component: Home,
     children: [{
+        path: '',
+        redirect: '/HomeIndex',
+    }, {
+        path: '/HomeIndex',
+        component: () =>
+            import ('../views/Home/HomeIndex.vue'),
+        name: '首页'
+    }, {
         path: '/UserInfo/SelectEntrys',
         component: () =>
             import ('../views/Home/SelectEntrys.vue'),
@@ -93,4 +100,5 @@ const routes = [{
     name: 'login',
     component: login
 }]
+
 export default routes
