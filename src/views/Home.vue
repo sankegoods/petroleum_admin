@@ -10,8 +10,15 @@
     </el-header>
     <el-container>
       <!-- 左侧菜单栏 -->
-      <el-aside width="auto">
-        <el-menu class="el-menu-vertical-demo" :collapse="isCollapse" :unique-opened="true" router>
+      <el-aside width="auto" style="background-color:#333333">
+        <el-menu
+          class="el-menu-vertical-demo"
+          :collapse="isCollapse"
+          :unique-opened="true"
+          background-color="#333300"
+          text-color="#CCCCCC"
+          router
+        >
           <el-submenu :index="index +''" v-for="(item , index) in menus" :key="index">
             <template slot="title">
               <i :class="IConsInfo[index]"></i>
@@ -29,7 +36,9 @@
       <el-container>
         <!-- 右侧视图 -->
         <el-main>
-          <homeRightView />
+          <div class="view_sty">
+            <homeRightView />
+          </div>
         </el-main>
         <el-footer>底部</el-footer>
       </el-container>
@@ -64,7 +73,7 @@ export default {
   },
   created() {
     this.menuInfo();
-    console.log("创建");
+    console.log("第一次加载");
   },
   methods: {
     menuInfo() {
@@ -79,29 +88,43 @@ export default {
         });
     },
   },
+  beforeCreate() {
+    console.log("初始化");
+  },
   activated() {
     console.log("活跃");
   },
   deactivated() {
-    console.log("不活跃")
+    console.log("不活跃");
   },
   destroyed() {
-    // console.log("创建");
+    console.log("销毁");
   },
-  beforeRouteleave(to, form, next) {
-    this.path = this.$router.path;
-  },
+  // beforeRouteleave(to, form, next) {
+  //   this.path = this.$router.path;
+  // },
 };
 </script>
 <style>
-* {
-  padding: 0;
-  margin: 0;
-}
 .el-menu {
   width: 200px;
+  
 }
 .el-menu--collapse {
   width: 60px !important;
+}
+.el-main {
+  padding: 10px 0px 10px 10px !important;
+  margin: 10px 0px 10px 10px !important;
+  border: 1px solid #CCCCCC;
+  background-color: #CCCCCC;
+  border-radius: 10px;
+}
+.view_sty {
+  background-color: #F2F2F2;
+  height: 765px;
+  overflow:auto;
+  border-radius: 10px;
+  padding: 20px;
 }
 </style>

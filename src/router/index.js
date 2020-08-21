@@ -10,6 +10,7 @@ const router = new VueRouter({
     })
     // router.beforeEach((to, from, next) => {
     //     if (to.path === '/login') {
+    //         console.log('消除存储信息');
     //         sessionStorage.removeItem('user')
     //     }
     //     let user = JSON.parse(sessionStorage.getItem('user'))
