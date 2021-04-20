@@ -20,7 +20,7 @@
 
     <el-table
       :data="tableData"
-      height="740"
+      height="682"
       empty-text="暂无数据"
       border
       style="width: 100%;text-align: center;"
@@ -50,7 +50,7 @@
     <el-drawer :title="title" :size="size" :visible.sync="drawer" :direction="direction">
       <el-form ref="form" :model="form" label-width="80px">
         <el-form-item label="申请人">
-          <el-input v-model="form.ApplyPersonId" :disabled="isdisabled"></el-input>
+          <el-input v-model="form.StaffNoN" :disabled="isdisabled"></el-input>
         </el-form-item>
         <el-form-item label="油料规格">
           <el-input v-model="form.OilSpec"></el-input>
@@ -97,7 +97,7 @@ export default {
       buttonName: "",
       form: {
         // 弹框中表单数据
-        ApplyPersonId: "",
+        StaffNoN: "",
         Remark: "",
         Id: "",
         OilSpec: "", //油料规格
@@ -141,7 +141,7 @@ export default {
       this.title = "添加";
       this.size = "60%";
       this.buttonName = "添加";
-      this.form.ApplyPersonId = "";
+      this.form.StaffNoN = "";
       this.form.Remark = "";
       this.form.OilSpec = "";
       this.form.Volume = "";
@@ -214,7 +214,7 @@ export default {
               url: url.CreateOilMaterialOrder,
               method: "Post",
               data: {
-                ApplyPersonId: this.form.ApplyPersonId,
+                StaffNoN: this.form.StaffNoN,
                 Remark: this.form.Remark,
                 OilSpec: this.form.OilSpec,
                 Volume: Number(this.form.Volume),
@@ -253,6 +253,7 @@ export default {
       }
     },
     logInfo() {
+      // console.log(this.$store.state.logInfo.info.name);
       request({
         url: url.GetOilMaterialOrder,
       })

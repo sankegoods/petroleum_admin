@@ -82,14 +82,22 @@ export default {
       rules: {
         Name: [{ validator: validatePass, trigger: "blur" }],
         Passwords: [{ validator: validatePass2, trigger: "blur" }],
-        // age: [{ validator: checkAge, trigger: "blur" }],
       },
     };
   },
+  created: function () {
+    this.login();
+  },
   methods: {
+    login(){
+       document.onkeydown = (event)=>{
+         if(event.key == "Enter")
+         {
+          this.submitForm('ruleForm');
+         }
+       }
+    },
     submitForm(formName) {
-      console.log(url.login);
-      console.log(this.ruleForm);
       //   console.log(this.$refs[formName]);
       var info = {};
       request({
@@ -100,21 +108,18 @@ export default {
         },
       })
         .then((res) => {
-          console.log(res);
+          if (res.data == "该用户不存在！！") {
+          } else if (res.data == "密码错误！！") {
+          } else {
+            this.$store.commit("LogIn", res.data.info)
+            // sessionStorage.setItem("user",JSON.stringify(res.data.info));
+            this.$router.replace('/HomeIndex')
+            
+          }
         })
         .catch((err) => {
           console.log(err);
         });
-      //   this.$refs[formName].validate((valid) => {
-      //       console.log(valid);
-      //     if (valid) {
-      //     sessionStorage.setItem('user','123')
-      //     this.$router.replace('/HomeIndex')
-      //     } else {
-      //       console.log("error submit!!");
-      //       return false;
-      //     }
-      //   });
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();

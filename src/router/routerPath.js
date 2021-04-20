@@ -15,14 +15,14 @@ const routes = [{
             import ('../views/Home/HomeIndex.vue'),
         name: '首页'
     }, {
-        path: '/UserInfo/SelectEntrys',
+        path: '/UserInfo/yuangongruzhi',
         component: () =>
-            import ('../views/Home/SelectEntrys.vue'),
+            import ('../views/Home/yuangongruzhi.vue'),
         name: '员工入职申请'
     }, {
-        path: '/StaffInfo/LeaveOfficeView',
+        path: '/StaffInfo/yuangonglizhi',
         component: () =>
-            import ('../views/Home/LeaveOfficeView.vue'),
+            import ('../views/Home/yuangonglizhi.vue'),
         name: '员工离职申请'
     }, {
         path: '/Oilseeds/Index',
@@ -31,7 +31,7 @@ const routes = [{
         name: '油料申请'
     }, ]
 }, {
-    path: '/',
+    path: '/InfoMaintain',
     name: '基础信息维护',
     component: Home,
     children: [{
@@ -42,12 +42,12 @@ const routes = [{
     }, {
         path: '/StaffInfo/Index',
         component: () =>
-            import ('../views/Home/LeaveOfficeView.vue'),
+            import ('../views/InfoMaintain/StaffAdministration.vue'),
         name: '员工基础信息管理'
     }, {
         path: '/JobInfo/Index',
         component: () =>
-            import ('../views/Home/Oilseeds.vue'),
+            import ('../views/InfoMaintain/jobInfo.vue'),
         name: '职位管理'
     }, ]
 }, {
@@ -57,7 +57,7 @@ const routes = [{
     children: [{
         path: '/StaffInfo/AddRoleInsetStaff',
         component: () =>
-            import ('../views/Home/SelectEntrys.vue'),
+            import ('../views/SystemSettings/StaffRole.vue'),
         name: '用户（员工）角色'
     }, {
         path: '/StaffInfo/空',
@@ -72,7 +72,7 @@ const routes = [{
     }, {
         path: '/RoleInfo/Index',
         component: () =>
-            import ('../views/Home/Oilseeds.vue'),
+            import ('../views/SystemSettings/jobJurisdiction.vue'),
         name: '角色权限'
     }, ]
 }, {
@@ -82,17 +82,17 @@ const routes = [{
     children: [{
         path: '/UserInfo/EntryAudit',
         component: () =>
-            import ('../views/Home/SelectEntrys.vue'),
+            import ('../views/richangguanli/ruzhishengi.vue'),
         name: '员工入职审批'
     }, {
         path: '/StaffInfo/LeavingAudit',
         component: () =>
-            import ('../views/Home/Oilseeds.vue'),
+            import ('../views/richangguanli/yuangonglizhishenpi.vue'),
         name: '员工离职审批'
     }, {
         path: '/Oilseeds/ApprovalIndex',
         component: () =>
-            import ('../views/Home/Oilseeds.vue'),
+            import ('../views/richangguanli/youliaoshenpi.vue'),
         name: '油料申请审批'
     }, ]
 }, {

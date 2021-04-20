@@ -79,6 +79,9 @@ export default {
     menuInfo() {
       request({
         url: url.menuActions,
+        params:{
+          jobId: this.$store.state.logInfo.jobId //JSON.parse(sessionStorage.getItem('user')).jobId
+        },
       })
         .then((res) => {
           this.menus = res.data;

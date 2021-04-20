@@ -10,3 +10,7 @@ export function request(config) {
         //发送请求
     return instance(config)
 }
+export function requestall(config) {
+    //发送请求
+    return axios.all(config)
+}
